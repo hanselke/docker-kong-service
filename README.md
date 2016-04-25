@@ -1,6 +1,8 @@
-# Kong in Docker
+# Kong as a Docker Service
 
-This is the official Docker image for [Kong][kong-site-url].
+This a fork of the official Docker image for [Kong][kong-site-url]. By using only Environment Variables to configure the Kong instance, this image makes it easier to deploy Kong as a Service using [Rancher](http://rancher.com/), [Kubernetes](http://kubernetes.io/), or [Tutum/Docker Cloud](https://www.docker.com/products/docker-cloud).
+
+Currently this image uses simple `sed` to do variable substitution and only supports Postgres configurations. In the future a more fully featured YAML parser will be used to support Cassandra and other configurations.
 
 # Supported tags and respective `Dockerfile` links
 
