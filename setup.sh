@@ -2,7 +2,7 @@
 
 # Setting up the proper database
 if [ -n "$DATABASE" ]; then
-  sed -ie "s/database: \"cassandra\"/database: \"$DATABASE\"/" /etc/kong/kong.yml
+  sed -ie "s/database: cassandra/database: $DATABASE/" /etc/kong/kong.yml
 fi
 
 # Postgres
