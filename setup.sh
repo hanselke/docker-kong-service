@@ -44,8 +44,8 @@ fi
 
 # Cluster Listen
 if [ -n "$CLUSTER_LISTEN_ADDRESS" ]; then
-  if [ "$CLUSTER_LISTEN_ADDRESS" = "rancher" ]; then
-    CLUSTER_LISTEN_ADDRESS="$(curl --retry 3 --fail --silent http://rancher-metadata/2015-07-25/self/container/primary_ip)"
+  if [ "$CLUSTER_LISTEN_ADDRESS" = "rancher" ];
+    CLUSTER_LISTEN_ADDRESS="$(curl --retry 3 --fail --silent http://rancher-metadata/2015-07-25/self/container/primary_ip):7946"
   fi
   sed -ie "s/cluster_listen: \"0.0.0.0:7946\"/cluster_listen: \"$CLUSTER_LISTEN_ADDRESS\"/" /etc/kong/kong.yml
 fi
