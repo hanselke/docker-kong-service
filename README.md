@@ -31,16 +31,21 @@ Existing `docker-kong` usages still applies. The following extra Environment Var
 
 Example:
 
+If using Rancher:
 ```shell
 $ docker run -d --name kong
-    --link kong-database:kong-database \
-    -e "DATABASE=cassandra" \
     -e "CLUSTER_LISTEN=rancher" \
-    -p 8000:8000 \
-    -p 8443:8443 \
-    -p 8001:8001 \
-    -p 7946:7946 \
-    -p 7946:7946/udp \
+    --link kong-database:kong-database \
+    -p 8000:8000 -p 8443:8443 -p 8001:8001 -p 7946:7946 -p 7946:7946/udp \
+    littlebaydigital/kong
+```
+
+If using a custom IP:
+```shell
+$ docker run -d --name kong
+    -e "CLUSTER_LISTEN=52.5.149.55:7946" \
+    --link kong-database:kong-database \
+    -p 8000:8000 -p 8443:8443 -p 8001:8001 -p 7946:7946 -p 7946:7946/udp \
     littlebaydigital/kong
 ```
 
@@ -62,11 +67,7 @@ $ docker run -d --name kong \
     -e "CASSANDRA_KEYSPACE=kong" \
     -e "CASSANDRA_USER=cassandra" \
     -e "CASSANDRA_PASSWORD=cassandra" \
-    -p 8000:8000 \
-    -p 8443:8443 \
-    -p 8001:8001 \
-    -p 7946:7946 \
-    -p 7946:7946/udp \
+    -p 8000:8000 -p 8443:8443 -p 8001:8001 -p 7946:7946 -p 7946:7946/udp \
     --security-opt seccomp:unconfined \
     littlebaydigital/kong
 ```
@@ -91,11 +92,7 @@ $ docker run -d --name kong \
     -e POSTGRES_DB=kong \
     -e POSTGRES_USER=kong \
     -e POSTGRES_PASSWORD=kong \
-    -p 8000:8000 \
-    -p 8443:8443 \
-    -p 8001:8001 \
-    -p 7946:7946 \
-    -p 7946:7946/udp \
+    -p 8000:8000 -p 8443:8443 -p 8001:8001 -p 7946:7946 -p 7946:7946/udp \
     --security-opt seccomp:unconfined \
     littlebaydigital/kong
 ```
