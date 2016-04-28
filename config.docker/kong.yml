@@ -14,7 +14,7 @@ cluster_listen: "0.0.0.0:7946"
 nginx: |
   {{user}}
   worker_processes auto;
-  error_log logs/error.log error;
+  error_log /dev/stdout error;
   daemon off;
 
   worker_rlimit_nofile {{auto_worker_rlimit_nofile}};
@@ -31,7 +31,7 @@ nginx: |
     resolver {{dns_resolver}} ipv6=off;
     charset UTF-8;
 
-    access_log logs/access.log;
+    access_log /dev/stdout;
     access_log off;
 
     # Timeouts
