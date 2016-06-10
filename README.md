@@ -18,8 +18,9 @@ By configuring `Cassandra` and `Postgres` purely using Environment Variables, it
 
 - `0.8.0` - *([Dockerfile](https://github.com/littlebaydigital/docker-kong-service/blob/0.8.0/Dockerfile))*
 - `0.8.1` - *([Dockerfile](https://github.com/littlebaydigital/docker-kong-service/blob/0.8.1/Dockerfile))*
-- `0.8.2` - *([Dockerfile](https://github.com/littlebaydigital/docker-kong/blob/0.8.2/Dockerfile))*
-- `latest` - *([Dockerfile](https://github.com/littlebaydigital/docker-kong-service/blob/0.8.2/Dockerfile))*
+- `0.8.2` - *([Dockerfile](https://github.com/littlebaydigital/docker-kong-service/blob/0.8.2/Dockerfile))*
+- `0.8.3` - *([Dockerfile](https://github.com/littlebaydigital/docker-kong-service/blob/0.8.3/Dockerfile))*
+- `latest` - *([Dockerfile](https://github.com/littlebaydigital/docker-kong-service/blob/0.8.3/Dockerfile))*
 
 # How to use this image
 
