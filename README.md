@@ -12,7 +12,9 @@ The official `docker-kong` image allows for:
 
 However when using `Rancher` or `Kubernetes`, containers are organised into `Services` deployed across multiple machine node clusters. Therefore it's not feasible to mount custom config files into volumes on each machine which are spun up and down on demand. See related question [here][envvar-question]
 
-By configuring `Cassandra` and `Postgres` purely using Environment Variables, it is a lot easier to point to an external RDS or InstaClustr instance.
+Also there is no need to explicitly link containers since internal DNS resolutions for Services comes out of the box in platforms such as `Rancher` or `Tutum`. 
+
+By configuring `Cassandra` and `Postgres` purely using Environment Variables, it is a lot easier to point to either an external database instance or an internal database service. Without having to build a custom kong config.
 
 # Supported tags and respective `Dockerfile` links
 
@@ -32,31 +34,11 @@ Existing `docker-kong` usages still applies. The following extra Environment Var
 | DATABASE | cassandra | either cassandra or postgres as per official image |
 | CLUSTER_LISTEN | 0.0.0.0:7946 | host ip and port. When `rancher` is specified, the [Rancher Meta Data Service][rancher-metadata-service] to work out the correct container ip address for `cluster_listen`. Other platforms can be extended quite easily. |
 
-Example:
-
-If using Rancher:
-```shell
-$ docker run -d --name kong
-    -e "CLUSTER_LISTEN=rancher" \
-    --link kong-database:kong-database \
-    -p 8000:8000 -p 8443:8443 -p 8001:8001 -p 7946:7946 -p 7946:7946/udp \
-    littlebaydigital/kong
-```
-
-If using a custom IP:
-```shell
-$ docker run -d --name kong
-    -e "CLUSTER_LISTEN=52.5.149.55:7946" \
-    --link kong-database:kong-database \
-    -p 8000:8000 -p 8443:8443 -p 8001:8001 -p 7946:7946 -p 7946:7946/udp \
-    littlebaydigital/kong
-```
-
 ### Cassandra Environment Variables:
 
 | Env Var | Default | Description |
 | --------|---------| ------------|
-| CASSANDRA_CONTACT_POINTS | kong-database:9046 | Optional. Defaults to linked container alias. Specify custom values in the format of `\"ip1:9046\",\"ip2:9046\"`|
+| CASSANDRA_CONTACT_POINTS | kong-database:9046 | Mandatory. Specify custom values in the format of `\"ip1:9046\",\"ip2:9046\"` or use a internal service name |
 | CASSANDRA_KEYSPACE | kong | Optional |
 | CASSANDRA_USER | kong | Optional |
 | CASSANDRA_PASSWORD | kong | Optional |
@@ -67,11 +49,17 @@ Example:
 $ docker run -d --name kong \
     -e "DATABASE=cassandra" \
     -e "CASSANDRA_CONTACT_POINTS=\"52.5.149.55:9042\",\"52.5.149.56:9042\"" \
-    -e "CASSANDRA_KEYSPACE=kong" \
-    -e "CASSANDRA_USER=cassandra" \
-    -e "CASSANDRA_PASSWORD=cassandra" \
     -p 8000:8000 -p 8443:8443 -p 8001:8001 -p 7946:7946 -p 7946:7946/udp \
-    --security-opt seccomp:unconfined \
+    littlebaydigital/kong
+```
+
+or:
+
+```shell
+$ docker run -d --name kong \
+    -e "DATABASE=cassandra" \
+    -e "CASSANDRA_CONTACT_POINTS=\"cassandra-service.kong-stack:9042\"" \
+    -p 8000:8000 -p 8443:8443 -p 8001:8001 -p 7946:7946 -p 7946:7946/udp \
     littlebaydigital/kong
 ```
 
@@ -79,7 +67,7 @@ $ docker run -d --name kong \
 
 | Env Var | Default | Description |
 | --------|---------| ------------|
-| POSTGRES_HOST | kong-database | Optional. Defaults to linked container alias |
+| POSTGRES_HOST | kong-database | Mandatory. Either a external hostname or internal service name |
 | POSTGRES_PORT | 5432 | Optional. |
 | POSTGRES_DATABASE | kong | Optional. |
 | POSTGRES_USER | kong | Optional. |
@@ -91,10 +79,17 @@ Example:
 $ docker run -d --name kong \
     -e "DATABASE=cassandra" \
     -e POSTGRES_HOST=127.0.0.1 \
-    -e POSTGRES_PORT=5432 \
-    -e POSTGRES_DB=kong \
-    -e POSTGRES_USER=kong \
-    -e POSTGRES_PASSWORD=kong \
+    -p 8000:8000 -p 8443:8443 -p 8001:8001 -p 7946:7946 -p 7946:7946/udp \
+    --security-opt seccomp:unconfined \
+    littlebaydigital/kong
+```
+
+or: 
+
+```shell
+$ docker run -d --name kong \
+    -e "DATABASE=cassandra" \
+    -e "POSTGRES_HOST=postgres-service.kong-stack" \
     -p 8000:8000 -p 8443:8443 -p 8001:8001 -p 7946:7946 -p 7946:7946/udp \
     --security-opt seccomp:unconfined \
     littlebaydigital/kong
