@@ -3,6 +3,8 @@
 
 This an extension of the [official Docker image][docker-kong-url] for [Kong][kong-url], with support to for [Rancher][rancher-url], [Kubernetes][kubernetes-url], or [Tutum/Docker Cloud][docker-cloud-url].
 
+You can also spin this up by adding in my custom [Rancher Catalog](https://github.com/LittleBayDigital/littlebay-rancher-catalog)
+
 # Justifications
 
 The official `docker-kong` image allows for:
