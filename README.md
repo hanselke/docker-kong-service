@@ -79,7 +79,7 @@ Example:
 
 ```shell
 $ docker run -d --name kong \
-    -e "DATABASE=cassandra" \
+    -e "DATABASE=postgres" \
     -e POSTGRES_HOST=127.0.0.1 \
     -p 8000:8000 -p 8443:8443 -p 8001:8001 -p 7946:7946 -p 7946:7946/udp \
     --security-opt seccomp:unconfined \
@@ -90,7 +90,7 @@ or:
 
 ```shell
 $ docker run -d --name kong \
-    -e "DATABASE=cassandra" \
+    -e "DATABASE=postgres" \
     -e "POSTGRES_HOST=postgres-service.kong-stack" \
     -p 8000:8000 -p 8443:8443 -p 8001:8001 -p 7946:7946 -p 7946:7946/udp \
     --security-opt seccomp:unconfined \
