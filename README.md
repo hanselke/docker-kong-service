@@ -65,6 +65,8 @@ $ docker run -d --name kong \
     littlebaydigital/kong
 ```
 
+Sample Docker Compose: https://github.com/yunspace/my-docker-stacks/tree/master/kong/cassandra
+
 ### Postgres Environment Variables:
 
 | Env Var | Default | Description |
@@ -96,6 +98,8 @@ $ docker run -d --name kong \
     --security-opt seccomp:unconfined \
     littlebaydigital/kong
 ```
+
+Sample Docker Compose: https://github.com/yunspace/my-docker-stacks/tree/master/kong/postgres
 
 [kong-url]: http://getkong.org
 [docker-kong-url]: https://hub.docker.com/r/mashape/kong/
