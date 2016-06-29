@@ -49,8 +49,8 @@ Example:
 
 ```shell
 $ docker run -d --name kong \
-    -e "DATABASE=cassandra" \
-    -e "CASSANDRA_CONTACT_POINTS=\"52.5.149.55:9042\",\"52.5.149.56:9042\"" \
+    -e DATABASE=cassandra \
+    -e CASSANDRA_CONTACT_POINTS='\"52.5.149.55:9042\",\"52.5.149.56:9042\"' \
     -p 8000:8000 -p 8443:8443 -p 8001:8001 -p 7946:7946 -p 7946:7946/udp \
     littlebaydigital/kong
 ```
@@ -59,8 +59,8 @@ or:
 
 ```shell
 $ docker run -d --name kong \
-    -e "DATABASE=cassandra" \
-    -e "CASSANDRA_CONTACT_POINTS=\"cassandra-service.kong-stack:9042\"" \
+    -e DATABASE=cassandra \
+    -e CASSANDRA_CONTACT_POINTS='\"cassandra-service.kong-stack:9042\"' \
     -p 8000:8000 -p 8443:8443 -p 8001:8001 -p 7946:7946 -p 7946:7946/udp \
     littlebaydigital/kong
 ```
@@ -79,7 +79,7 @@ Example:
 
 ```shell
 $ docker run -d --name kong \
-    -e "DATABASE=postgres" \
+    -e DATABASE=postgres \
     -e POSTGRES_HOST=127.0.0.1 \
     -p 8000:8000 -p 8443:8443 -p 8001:8001 -p 7946:7946 -p 7946:7946/udp \
     --security-opt seccomp:unconfined \
@@ -90,8 +90,8 @@ or:
 
 ```shell
 $ docker run -d --name kong \
-    -e "DATABASE=postgres" \
-    -e "POSTGRES_HOST=postgres-service.kong-stack" \
+    -e DATABASE=postgres \
+    -e POSTGRES_HOST=postgres-service.kong-stack \
     -p 8000:8000 -p 8443:8443 -p 8001:8001 -p 7946:7946 -p 7946:7946/udp \
     --security-opt seccomp:unconfined \
     littlebaydigital/kong
