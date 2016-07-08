@@ -1,6 +1,8 @@
 # Kong as a Docker Service
 [![Docker Repository on Quay](https://quay.io/repository/littlebaydigital/kong/status "Docker Repository on Quay")](https://quay.io/repository/littlebaydigital/kong)
 
+[Docker Hub Link](https://hub.docker.com/r/littlebaydigital/kong/)
+
 This an extension of the [official Docker image][docker-kong-url] for [Kong][kong-url], with support to for [Rancher][rancher-url], [Kubernetes][kubernetes-url], or [Tutum/Docker Cloud][docker-cloud-url].
 
 You can also spin this up by adding in my custom [Rancher Catalog](https://github.com/LittleBayDigital/littlebay-rancher-catalog)
