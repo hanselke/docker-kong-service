@@ -1,5 +1,5 @@
 FROM centos:7
-MAINTAINER Marco Palladino, marco@mashape.com
+MAINTAINER Yun Zhi Lin, yun@yunspace.com
 
 ENV KONG_VERSION 0.8.3
 
