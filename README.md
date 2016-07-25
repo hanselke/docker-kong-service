@@ -1,6 +1,5 @@
 # Kong as a Docker Service
 [![Docker Repository on Quay](https://quay.io/repository/littlebaydigital/kong/status "Docker Repository on Quay")](https://quay.io/repository/littlebaydigital/kong)
-
 [![](https://images.microbadger.com/badges/version/littlebaydigital/kong.svg)](http://microbadger.com/#/images/littlebaydigital/kong "Get your own version badge on microbadger.com")
 
 This an extension of the [official Docker image][docker-kong-url] for [Kong][kong-url], with support to for [Rancher][rancher-url], [Kubernetes][kubernetes-url], or [Tutum/Docker Cloud][docker-cloud-url].
@@ -36,7 +35,7 @@ Existing `docker-kong` usages still applies. The following extra Environment Var
 | Env Var | Default | Description |
 | --------|---------| ------------|
 | DATABASE | cassandra | either cassandra or postgres as per official image |
-| CLUSTER_LISTEN | 0.0.0.0:7946 | host ip and port. When `rancher` is specified, the [Rancher Meta Data Service][rancher-metadata-service] to work out the correct container ip address for `cluster_listen`. Other platforms can be extended quite easily. |
+| CLUSTER_LISTEN | 0.0.0.0:7946 | host ip and port. When `rancher` is specified, uses the [Rancher Meta Data Service][rancher-metadata-service] to work out the correct container ip address for `cluster_listen`. Other platforms can be extended quite easily. |
 
 ### Cassandra Environment Variables:
 
