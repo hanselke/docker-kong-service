@@ -1,5 +1,5 @@
 # Kong as a Docker Service
-[![Docker Repository on Quay](https://quay.io/repository/littlebaydigital/kong/status "Docker Repository on Quay")](https://quay.io/repository/littlebaydigital/kong)
+
 [![](https://images.microbadger.com/badges/version/littlebaydigital/kong.svg)](http://microbadger.com/#/images/littlebaydigital/kong "Get your own version badge on microbadger.com")
 
 This an extension of the [official Docker image][docker-kong-url] for [Kong][kong-url], with support to for [Rancher][rancher-url], [Kubernetes][kubernetes-url], or [Tutum/Docker Cloud][docker-cloud-url].
