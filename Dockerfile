@@ -1,5 +1,5 @@
 FROM centos:7
-MAINTAINER Yun Zhi Lin, yun@yunspace.com
+MAINTAINER Hansel ke, hansel@openb.net
 
 ENV KONG_VERSION 0.10.2
 
