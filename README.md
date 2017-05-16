@@ -1,10 +1,8 @@
 # Kong as a Docker Service
 
-[![](https://images.microbadger.com/badges/version/littlebaydigital/kong.svg)](http://microbadger.com/#/images/littlebaydigital/kong "Get your own version badge on microbadger.com")
+Came from littlebaydigital/kong
 
-This an extension of the [official Docker image][docker-kong-url] for [Kong][kong-url], with support to for [Rancher][rancher-url], [Kubernetes][kubernetes-url], or [Tutum/Docker Cloud][docker-cloud-url].
-
-You can also spin this up by adding in my custom [Rancher Catalog](https://github.com/LittleBayDigital/littlebay-rancher-catalog)
+updated to 0.10.2
 
 # Justifications
 
